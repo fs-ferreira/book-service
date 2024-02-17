@@ -3,15 +3,9 @@ package br.com.fsferreira.service;
 import br.com.fsferreira.model.Book;
 import br.com.fsferreira.proxy.CurrencyProxy;
 import br.com.fsferreira.repository.BookRepository;
-import br.com.fsferreira.response.Currency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.HashMap;
 
 @Service
 public class BookService {
