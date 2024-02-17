@@ -27,9 +27,9 @@ public class BookService {
         var book = repository.findById(id).orElseThrow(() -> new RuntimeException("Book not found!"));
         var port = environment.getProperty("local.server.port");
 
-        var localeCurrency = proxy.getCurrency(book.getPrice(),"USD",currency);
+        var localeCurrency = proxy.getCurrency(book.getPrice(), "USD", currency);
 
-        book.setEnv(port);
+        book.setEnv("Book port " + port + " Currency port " + localeCurrency.getEnv());
         book.setPrice(localeCurrency.getConvertedValue());
 
         return book;
