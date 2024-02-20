@@ -2,10 +2,9 @@ package br.com.fsferreira.controller;
 
 import br.com.fsferreira.model.Book;
 import br.com.fsferreira.service.BookService;
-import io.github.resilience4j.bulkhead.annotation.Bulkhead;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
-import io.github.resilience4j.retry.annotation.Retry;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+@Tag(name = "Book Endpoint")
 @RestController
 @RequestMapping("/book-service")
 public class BookController {
@@ -20,6 +20,7 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @Operation(summary = "Find a book by ID, returning his Price by locale currency.")
     @GetMapping(value = "/{id}/{currency}")
     public Book findBookLocale(
             @PathVariable("id") Long id,
